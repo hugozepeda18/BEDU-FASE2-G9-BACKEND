@@ -8,3 +8,17 @@ Team 9:
 * Isidro Salvador Briones Torres
 * Ricardo Contreras Juárez
 * Keny Almazan
+
+To run project in Local:
+
+1.- Download prject of repository
+$ git clone https://github.com/hugozepeda18/BEDU-FASE2-G9-BACKEND.git &
+
+2.- run dependencies
+$ npm install
+
+3.- run project in dev for use nodemon
+$ npm run dev
+
+or run project for production
+$ npm start
