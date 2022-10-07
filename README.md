@@ -41,3 +41,14 @@ https://name_project.herokuapp.com/ | https://git.heroku.com/name_project.git
 
 5.- Then release the image to your app:
 ~$ heroku container:release web --app name_project
+
+# Routes when testing local: 
+
+* Welcome page: localhost:4001/v1/ 
+* Users Router: localhost:4001/v1/users or .../:userId + HTTP methods
+* Documentation: localhost:4001/docs
+
+Branches:
+
+main - development branch
+production - production branch
