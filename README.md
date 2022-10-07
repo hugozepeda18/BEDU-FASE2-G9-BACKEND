@@ -22,3 +22,7 @@ $ npm run dev
 
 or run project for production
 $ npm start
+
+Branches: 
+main - development branch
+production - production branch
