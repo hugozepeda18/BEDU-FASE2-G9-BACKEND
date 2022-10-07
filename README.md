@@ -23,6 +23,11 @@ $ npm run dev
 or run project for production
 $ npm start
 
+Routes when testing local: 
+Welcome page: localhost:4001/v1/ 
+Users Router: localhost:4001/v1/users or .../:userId + HTTP methods
+Documentation: localhost:4001/docs
+
 Branches: 
 main - development branch
 production - production branch
