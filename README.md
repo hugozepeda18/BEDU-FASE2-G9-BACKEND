@@ -48,7 +48,13 @@ https://name_project.herokuapp.com/ | https://git.heroku.com/name_project.git
 * Users Router: localhost:4001/v1/users or .../:userId + HTTP methods
 * Documentation: localhost:4001/docs
 
-Branches:
+# Branches:
 
 main - development branch
 production - production branch
+
+# Data Base Structure Diagram
+https://lucid.app/lucidchart/4ec2154c-c353-4f16-9925-e9e1858c4501/edit?viewport_loc=-357%2C-500%2C3635%2C1981%2C0_0&invitationId=inv_07546f9b-de5f-424e-b0c5-3545453ccff5#
+
+# JIRA Board
+https://beduteam9.atlassian.net/jira/software/projects/TEAM/boards/1 
