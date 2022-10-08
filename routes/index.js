@@ -1,9 +1,12 @@
 var router = require('express').Router();
 
-router.get('/', (res)=>{
-  res.send('Welcome to Bedu-Shop API');
+router.get('/', (req, res) =>{
+  return res.status(200).send('Welcome to Bedu-Shop API');
 });
 
-router.use('/Users', require('./UserRoute'));
+router.use('/users', require('./UserRoute'));
+router.use('/products', require('./ProductRoute'));
+router.use('/categories', require('./CategoryRoute'));
+router.use('/sales', require('./SaleRoute'));
 
 module.exports = router;
