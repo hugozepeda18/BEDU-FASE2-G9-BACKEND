@@ -65,7 +65,7 @@ function deleteUser(req, res) {
     }
   })
     .then(user =>
-      res.status(200).send({"Se elimino el producto": idUser})
+      res.status(200).send({"User eliminated": idUser})
     )
 }
 

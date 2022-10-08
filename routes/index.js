@@ -1,7 +1,7 @@
 var router = require('express').Router();
 
-router.get('/', (req, res) =>{
-  return res.status(200).send('Welcome to Bedu-Shop API');
+router.get('/', (req, res)=>{
+  res.send('Welcome to Bedu-Shop API');
 });
 
 router.use('/users', require('./UserRoute'));
