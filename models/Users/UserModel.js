@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db')
+const sequelize = require('../../config/db')
+const TypeUser = require('./TypeUserModel')
 
 const User = sequelize.define('User', {
   idUser: {
@@ -26,9 +27,14 @@ const User = sequelize.define('User', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false
+  timestamps: true
 });
 
-//User.sync();
+User.belongsTo(TypeUser, {
+  foreignKey: "typeUser",
+  constraints: true,
+});
+
+//sequelize.sync({force: true});
 
 module.exports = User;

@@ -1,11 +1,12 @@
 const options = {
     swaggerDefinition: {
         info: {
+            title: "Bedu-Shop API",
             version: "1.0.0",
-            title: "Bedu-Shop API"
+            description: 'This documentation is to show how the API is built.'
         },
     },
-    apis: ["./routes/UserRoute.js"],
+    apis: ['./routes/*.js']
     /* components: {
         securitySchemes: {
             bearerAuth: {

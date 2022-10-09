@@ -1,4 +1,4 @@
-const User = require('../models/UserModel')
+const User = require('../../models/Users/UserModel')
 const validator = require('validator');
 
 function createUser(req, res) {

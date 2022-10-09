@@ -5,5 +5,6 @@ router.get('/', (req, res)=>{
 });
 
 router.use('/Users', require('./UserRoute'));
+router.use('/Users/Types', require('./TypeUserRoute'));
 
 module.exports = router;
