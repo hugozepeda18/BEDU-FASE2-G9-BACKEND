@@ -1,6 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db')
 
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken'); 
+const secret = require('../config').secret; 
+
 const User = sequelize.define('User', {
   idUser: {
     type: DataTypes.UUID,
@@ -9,20 +13,34 @@ const User = sequelize.define('User', {
     primaryKey: true
   },
   name: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: false,
+    unique: true,
+    validate:{
+        isLowercase: true,
+        is: /^[a-zA-Z0-9]+$/
+    }
   },
   lastName: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: false,
   },
   brithdayDate: {
-    type: DataTypes.DATE
+    type: DataTypes.DATE,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+  }
   },
   address: {
     type: DataTypes.TEXT
   },
   isActive: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true
+    defaultValue: true,
+    validate:{
+      isIn: [[true, false]]
+  }
   }
 }, {
   freezeTableName: true,
