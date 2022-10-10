@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../../config/db')
-const TypeUser = require('./TypeUserModel')
+const UserTypes = require('./UserTypesModel')
 
 const User = sequelize.define('User', {
   idUser: {
@@ -30,7 +30,7 @@ const User = sequelize.define('User', {
   timestamps: true
 });
 
-User.belongsTo(TypeUser, {
+User.belongsTo(UserTypes, {
   foreignKey: "typeUser",
   constraints: true,
 });

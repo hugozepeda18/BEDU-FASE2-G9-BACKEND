@@ -1,22 +1,22 @@
-const TypeUser = require('../../models/Users/TypeUserModel')
+const UserTypes = require('../../models/Users/UserTypesModel')
 const validator = require('validator');
 
 function createTypeUser(req, res) {
     var body = req.body;
-    TypeUser.create(body)
-        .then(typeUser =>
-            res.status(201).send(typeUser)
+    UserTypes.create(body)
+        .then(userTypes =>
+            res.status(201).send(userTypes)
         )
 }
 
 async function getTypeUser(req, res) {
     var idTypeUser = req.params.idTypeUser;
-    await TypeUser.findByPk(idTypeUser)
-        .then(typeUser => {
-            if (!typeUser) {
+    await UserTypes.findByPk(idTypeUser)
+        .then(userTypes => {
+            if (!userTypes) {
                 res.status(404).send({ message: 'The type user not found.' })
             } else {
-                res.status(200).send(typeUser)
+                res.status(200).send(userTypes)
             }
         }
         ).catch(err => {
@@ -29,16 +29,16 @@ async function getTypeUser(req, res) {
 }
 
 async function getTypeUsers(req, res) {
-    await TypeUser.findAll({
+    await UserTypes.findAll({
         where: {
             isActive: true
         }
     })
-        .then(typeUser => {
-            if (typeUser == 0) {
+        .then(userTypes => {
+            if (userTypes == 0) {
                 res.status(204).send();
             } else {
-                res.status(200).send(typeUser);
+                res.status(200).send(userTypes);
             }
         }
         )
@@ -47,24 +47,24 @@ async function getTypeUsers(req, res) {
 async function updateTypeUser(req, res) {
     var body = req.body;
     var idTypeUser = req.params.idTypeUser;
-    await TypeUser.update(body, {
+    await userTypes.update(body, {
         where: {
             idTypeUser: idTypeUser
         }
     })
-        .then(typeUser =>
-            res.status(200).send(typeUser)
+        .then(userTypes =>
+            res.status(200).send(userTypes)
         )
 }
 
 function deleteTypeUser(req, res) {
     var idTypeUser = req.params.idTypeUser;
-    TypeUser.destroy({
+    UserTypes.destroy({
         where: {
             idTypeUser: idTypeUser
         }
     })
-        .then(typeUser =>
+        .then(userTypes =>
             res.status(200).send({ "TypeUser eliminated": idTypeUser })
         )
 }

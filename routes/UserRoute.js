@@ -15,6 +15,35 @@ const {
  *      - Users
  *    summary: Create user.
  *    description: Creates a new user.
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            User:
+ *              type: object
+ *              properties:
+ *            name:
+ *              type: string
+ *              description: user name
+ *              example: Keny
+ *            lastname:
+ *              type: string
+ *              description: user name
+ *              example: Almazan
+ *            brithdayDate:
+ *              type: string
+ *              format: date
+ *              description: user name
+ *              example: Keny
+ *            address:
+ *              type: string
+ *              description: user name
+ *              example: Keny
+ *            typeUser:
+ *              type: uuid
+ *              description: user name
+ *              example: Keny
  *    produces:
  *      - application/json
  *    responses:
