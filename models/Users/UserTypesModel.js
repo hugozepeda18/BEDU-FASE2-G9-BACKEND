@@ -1,23 +1,17 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db')
+const sequelize = require('../../config/db')
 
-const User = sequelize.define('User', {
-  idUser: {
+const UserTypes = sequelize.define('TypeUser', {
+  idTypeUser: {
     type: DataTypes.UUID,
     defaultValue: Sequelize.UUIDV4,
     allowNull: false,
     primaryKey: true
   },
-  name: {
+  type: {
     type: DataTypes.TEXT
   },
-  lastName: {
-    type: DataTypes.TEXT
-  },
-  brithdayDate: {
-    type: DataTypes.DATE
-  },
-  address: {
+  description: {
     type: DataTypes.TEXT
   },
   isActive: {
@@ -26,9 +20,7 @@ const User = sequelize.define('User', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false
+  timestamps: true
 });
 
-//User.sync();
-
-module.exports = User;
+module.exports = UserTypes;

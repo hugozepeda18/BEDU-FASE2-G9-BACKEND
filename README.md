@@ -42,7 +42,21 @@ https://name_project.herokuapp.com/ | https://git.heroku.com/name_project.git
 5.- Then release the image to your app:
 ~$ heroku container:release web --app name_project
 
-# Routes when testing local: 
+### Deploy in heroku with docker
+
+1.- Login in Heroku
+~$ heroku container:login
+
+2.- Build the image (Name image equal to app) - (Remember that for this step, you must have docker installed)
+~$ docker build . -t bedu-fase2-g9-backend:latest
+
+3.- Push to Container Registry:
+~$ heroku container:push web --app bedu-fase2-g9-backend
+
+4.- Then release the image to your app:
+~$ heroku container:release web --app bedu-fase2-g9-backend
+
+### Routes when testing local: 
 
 * Welcome page: localhost:4001/v1/ 
 * Users Router: localhost:4001/v1/users or .../:userId + HTTP methods
