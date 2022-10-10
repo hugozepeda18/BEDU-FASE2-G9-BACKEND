@@ -1,39 +1,49 @@
 const User = require('../../models/Users/UserModel')
 const UserCredentials = require('../../models/Users/UserCredentialsModel')
 const validator = require('validator');
+const e = require('express');
 
-function createUser(req, res) {
-  const body = req.body;
-  let userBody = {
-    name: body.name,
-    lastName: body.lastName,
-    brithdayDate: body.brithdayDate,
-    address: body.address,
-    typeUser: body.typeUser
-  };
+async function createUser(req, res) {
+  try{
+    const body = req.body;
+    let userBody = {
+      name: body.name,
+      lastName: body.lastName,
+      brithdayDate: body.brithdayDate,
+      address: body.address,
+      typeUser: body.typeUser
+    };
 
-  const newUser = User.create(userBody)
-    .then(user => {
-      return user;
+    const newUser = await User.create(userBody);
+
+    let credentialsBody = {
+      email: body.credentials.email,
+      password: body.credentials.password,
+      idUser: newUser.idUser
+    };
+
+    const credential = await UserCredentials.create(credentialsBody);
+    const {salt, hash} = UserCredentials.createPassword(credentialsBody.password);
+
+    UserCredentials.password_salt = salt;
+    UserCredentials.password_hash = hash;
+    credential.save();
+
+    let resUser = {
+      user: userBody,
+      credentials: credentialsBody
+    };
+    res.status(201).send(resUser);
+  }catch(err){
+    if (["SequelizeValidationError", "SequelizeUniqueConstraintError"].includes(err.name) ) {
+      return res.status(400).json({
+        error: err.errors.map(e => e.message)
+      })
     }
-    );
-
-  let credentialsBody = {
-    email: body.credentials.email,
-    password: body.credentials.password,
-    idUser: newUser.idUser
-  };
-
-  UserCredentials.create(credentialsBody)
-    .then(credentials => {
-      console.log(newUser.idUser);
-      let resUser = {
-        user: userBody,
-        credentials: credentialsBody
-      };
-      res.status(201).send(resUser);
+    else {
+        throw err;
     }
-  );
+  }  
 }
 
 async function getUser(req, res) {

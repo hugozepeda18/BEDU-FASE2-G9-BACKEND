@@ -2,10 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../../config/db')
 const UserTypes = require('./UserTypesModel')
 
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken'); 
-const secret = require('../config').secret; 
-
 const User = sequelize.define('User', {
   idUser: {
     type: DataTypes.UUID,
@@ -20,7 +16,7 @@ const User = sequelize.define('User', {
     unique: true,
     validate:{
         notEmpty: true,
-        isAlpha: true,
+        isAlphanumeric: true,
     }
   },
   lastName: {
@@ -28,7 +24,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      isAlpha: true,
+      isAlphanumeric: true,
   }
   },
   brithdayDate: {

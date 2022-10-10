@@ -43,7 +43,7 @@ router.post('/', createTypeUser)
  *        description: If there are not users types.
  *        type: empty array
  */
-router.get('/', getTypeUser)
+router.get('/', getTypeUsers)
 
 /**
  * @swagger
@@ -63,7 +63,7 @@ router.get('/', getTypeUser)
  *        type: empty array
  *
  */
-router.get('/:idTypeUser', getTypeUsers)
+router.get('/:idTypeUser', getTypeUser)
 
 /**
  * @swagger

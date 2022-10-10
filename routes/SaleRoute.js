@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
     createSale
-} = require('../controllers/SaleController');
+} = require('../controllers/Sales/SaleController');
 
 router.post('/', createSale);
 

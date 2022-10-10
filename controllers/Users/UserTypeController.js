@@ -45,9 +45,9 @@ async function getTypeUsers(req, res) {
 }
 
 async function updateTypeUser(req, res) {
-    var body = req.body;
-    var idTypeUser = req.params.idTypeUser;
-    await userTypes.update(body, {
+    const body = req.body;
+    const idTypeUser = req.params.idTypeUser;
+    await UserTypes.update(body, {
         where: {
             idTypeUser: idTypeUser
         }
@@ -59,7 +59,7 @@ async function updateTypeUser(req, res) {
 
 function deleteTypeUser(req, res) {
     var idTypeUser = req.params.idTypeUser;
-    UserTypes.destroy({
+    UserTypes.update({ isActive: false },{
         where: {
             idTypeUser: idTypeUser
         }
