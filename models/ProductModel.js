@@ -7,19 +7,30 @@ const Product = sequelize.define('Product', {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        primaryKey:true
+        primaryKey:true,
+        autoIncrement: true
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+        }
     },
     price:{
         type: DataTypes.DOUBLE,
-        allowNull: false
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+            isNumeric: true
+        }
     },
     idCategory: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+        }
     }
 });
 

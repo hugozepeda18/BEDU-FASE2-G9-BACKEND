@@ -14,7 +14,11 @@ const Sale = sequelize.define('Sale', {
     },
     quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+            isNumeric: true
+        }
     },
     deliveryDate: {
         type: DataTypes.DATE,
