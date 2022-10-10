@@ -1,5 +1,5 @@
-const Category = require('../models/CategoryModel');
-const Product = require('../models/ProductModel');
+const Category = require('../../models/CategoryModel');
+const Product = require('../../models/ProductModel');
 const validator = require('validator');
 
 const createCategory = (req, res) => {

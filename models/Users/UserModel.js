@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db')
-
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken'); 
-const secret = require('../config').secret; 
+const sequelize = require('../../config/db')
+const UserTypes = require('./UserTypesModel')
 
 const User = sequelize.define('User', {
   idUser: {
@@ -19,7 +16,7 @@ const User = sequelize.define('User', {
     unique: true,
     validate:{
         notEmpty: true,
-        isAlpha: true,
+        isAlphanumeric: true,
     }
   },
   lastName: {
@@ -27,7 +24,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      isAlpha: true,
+      isAlphanumeric: true,
   }
   },
   brithdayDate: {
@@ -55,9 +52,14 @@ const User = sequelize.define('User', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false
+  timestamps: true
 });
 
-// User.sync();
+User.belongsTo(UserTypes, {
+  foreignKey: "typeUser",
+  constraints: true,
+});
+
+//sequelize.sync({force: true});
 
 module.exports = User;
