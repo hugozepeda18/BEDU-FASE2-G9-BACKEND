@@ -10,36 +10,47 @@ const User = sequelize.define('User', {
     type: DataTypes.UUID,
     defaultValue: Sequelize.UUIDV4,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   name: {
     type: DataTypes.TEXT,
     allowNull: false,
     unique: true,
     validate:{
-        isLowercase: true,
-        is: /^[a-zA-Z0-9]+$/
+        notEmpty: true,
+        isAlpha: true,
     }
   },
   lastName: {
     type: DataTypes.TEXT,
     allowNull: false,
+    validate: {
+      notEmpty: true,
+      isAlpha: true,
+  }
   },
   brithdayDate: {
     type: DataTypes.DATE,
     allowNull: false,
     validate: {
-      isEmail: true,
+      notEmpty: true,
+      isDate: true,
   }
   },
   address: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+  }
   },
   isActive: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
     validate:{
-      isIn: [[true, false]]
+      isIn: [[true, false]],
+      notEmpty: true,
   }
   }
 }, {
